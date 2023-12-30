@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 public class KeyHandler implements KeyListener {
 
     public static String keyString = "";
+    public static String status = "continue";
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -37,6 +38,11 @@ public class KeyHandler implements KeyListener {
                 break;
             case KeyEvent.VK_ESCAPE:
                 keyString = "escape";
+                break;
+            case KeyEvent.VK_P:
+                if(status.equals("pause"))
+                    status = "continue";
+                else status = "pause";
                 break;
             default:
                 keyString = "";
