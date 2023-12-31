@@ -14,6 +14,7 @@ public class Block {
     }
 
     public void draw(Graphics2D g2){
+        int margin = 1;
         g2.setColor(c);
         g2.fillRect(x, y, size, size);
     }
