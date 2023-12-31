@@ -12,6 +12,11 @@ public class Mino {
     public Block tempB[] = new Block[4];
     public int autoDropCounter = 0;
     public int direction = 1;
+    public Boolean active = true;
+    //public Boolean deactive = false;
+    public int deactiveCount = 0;
+
+    public Boolean LeftCollision, RightCollision, BottomCollision, RotationCollision;
 
     public void create(Color c) {
         b[0] = new Block(c);
@@ -50,6 +55,27 @@ public class Mino {
 
     public void getDirection4() {
 
+    }
+
+    public Boolean CheckCollision() {
+        LeftCollision = false;
+        RightCollision = false;
+        BottomCollision = false;
+
+        CheckCollionBlock();
+
+        for (int i = 0; i < b.length; ++i) {
+            if (b[i].x == PlayManager.left_x) {
+                LeftCollision = true;
+            }
+            if (b[i].x + Block.size == PlayManager.right_x) {
+                RightCollision = true;
+            }
+            if (b[i].y + Block.size == PlayManager.bottom_y) {
+                BottomCollision = true;
+            }
+        }
+        return false;
     }
 
     public void update() {
