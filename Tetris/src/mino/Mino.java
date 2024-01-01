@@ -100,6 +100,22 @@ public class Mino {
         return false;
     }
 
+    public Boolean CheckCollionBlock(){
+        for (int i = 0; i < PlayManager.staticBlock.size(); i++) {
+            for (int j = 0; j < b.length; j++) {
+                if (b[j].x == PlayManager.staticBlock.get(i).x && b[j].y + Block.size == PlayManager.staticBlock.get(i).y) {
+                    BottomCollision = true;
+                }
+                if (b[j].x == PlayManager.staticBlock.get(i).x + Block.size && b[j].y == PlayManager.staticBlock.get(i).y) {
+                    LeftCollision = true;
+                }
+                if (b[j].x == PlayManager.staticBlock.get(i).x - Block.size && b[j].y == PlayManager.staticBlock.get(i).y) {
+                    RightCollision = true;
+                }
+            }
+        }
+        return false;
+    }
     
     public void deactive() {
         deactiveCount++;
