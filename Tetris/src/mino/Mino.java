@@ -77,23 +77,38 @@ public class Mino {
         }
         return false;
     }
-
+    
+    public void deactive() {
+        deactiveCount++;
+        if (deactiveCount == 30) {
+            active = false;
+        }
+    }
+    
     public void update() {
 
         switch (KeyHandler.keyString) {
             case "enter":
                 switch (direction) {
                     case 1:
-                        getDirection2();
+                        if (!CheckRotation()) {
+                            getDirection2();
+                        }
                         break;
                     case 2:
-                        getDirection3();
+                        if (!CheckRotation()) {
+                            getDirection3();
+                        }
                         break;
                     case 3:
-                        getDirection4();
+                        if (!CheckRotation()) {
+                            getDirection4();
+                        }
                         break;
-                    case 4: 
-                        getDirection1();
+                    case 4:
+                        if (!CheckRotation()) {
+                            getDirection1();
+                        }
                         break;
                 }
                 KeyHandler.keyString = "";
@@ -130,7 +145,7 @@ public class Mino {
             default:
                 break;
         }
-
+    if (!BottomCollision){
         autoDropCounter++;
         if (autoDropCounter == PlayManager.dropInterval) {
             autoDropCounter = 0;
@@ -138,6 +153,7 @@ public class Mino {
                 b[i].y += Block.size;
             }
         }
+        else deactives();
     }
 
     public void draw(Graphics2D g2) {
