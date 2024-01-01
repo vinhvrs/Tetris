@@ -192,9 +192,9 @@ public class Mino {
                 b[i].y += Block.size;
             }
         }
-        else deactives();
-    }
-
+    } 
+    else deactives();
+}
     public void draw(Graphics2D g2) {
         int margin = 1;
         g2.setColor(b[0].c);
