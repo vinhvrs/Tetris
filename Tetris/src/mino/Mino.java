@@ -77,6 +77,29 @@ public class Mino {
         }
         return false;
     }
+
+        public Boolean CheckRotation() {
+        LeftCollision = false;
+        RightCollision = false;
+        BottomCollision = false;
+
+        CheckCollionBlock();
+
+        for (int i = 0; i < b.length; i++){
+            if (b[i].x - Block.size < PlayManager.left_x) {
+                LeftCollision = true;
+            }
+            if (b[i].x + Block.size > PlayManager.right_x) {
+                RightCollision = true;
+            }
+            if (b[i].y + Block.size > PlayManager.bottom_y) {
+                BottomCollision = true;
+            }
+        }
+
+        return false;
+    }
+
     
     public void deactive() {
         deactiveCount++;
