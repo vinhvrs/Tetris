@@ -4,9 +4,8 @@ import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import javax.swing.JPanel;
 
-import mino.Mino;
+import javax.swing.JPanel;
 
 
 public class GamePanel extends JPanel implements Runnable{
@@ -55,13 +54,13 @@ public class GamePanel extends JPanel implements Runnable{
             return;
         } 
         if(KeyHandler.status == "continue"){
-        pm.update();
+            pm.update();
         }
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        java.awt.Graphics2D g2d = (java.awt.Graphics2D) g;
+        //java.awt.Graphics2D g2d = (java.awt.Graphics2D) g;
         //g2d.setColor(Color.WHITE);
 
         Graphics2D g2 = (Graphics2D) g;

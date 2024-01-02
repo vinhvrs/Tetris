@@ -40,9 +40,10 @@ public class KeyHandler implements KeyListener {
                 keyString = "escape";
                 break;
             case KeyEvent.VK_P:
-                if(status.equals("pause"))
+                if (status.equals("pause"))
                     status = "continue";
-                else status = "pause";
+                else
+                    status = "pause";
                 break;
             default:
                 keyString = "";
