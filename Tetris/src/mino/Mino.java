@@ -2,7 +2,6 @@ package mino;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-
 import main.KeyHandler;
 
 import main.PlayManager;
@@ -34,11 +33,16 @@ public class Mino {
     }
 
     public void updateXY(int Direction) {
-        this.direction = Direction;
-        for (int i = 0; i < 4; ++i) {
-            b[i].x = tempB[i].x;
-            b[i].y = tempB[i].y;
+
+        CheckRotation();
+        if (!BottomCollision && !LeftCollision && !RightCollision) {
+            this.direction = Direction;
+            for (int i = 0; i < 4; ++i) {
+                b[i].x = tempB[i].x;
+                b[i].y = tempB[i].y;
+            }
         }
+
     }
 
     public void getDirection1() {
@@ -78,7 +82,7 @@ public class Mino {
         return false;
     }
 
-        public Boolean CheckRotation() {
+    public Boolean CheckRotation() {
         LeftCollision = false;
         RightCollision = false;
         BottomCollision = false;
@@ -116,21 +120,26 @@ public class Mino {
         }
         return false;
     }
-    
+
     public void deactive() {
         deactiveCount++;
         if (deactiveCount == 30) {
             active = false;
         }
     }
-    
-    public void update() {
 
+    public void update() {
+        //if (!active) {
+            //return;
+        //}
+
+        CheckCollision();
         switch (KeyHandler.keyString) {
             case "enter":
                 switch (direction) {
                     case 1:
                         if (!CheckRotation()) {
+
                             getDirection2();
                         }
                         break;
@@ -154,47 +163,57 @@ public class Mino {
                 // autoDropCounter = 0;
                 break;
             case "up":
-                for (int i = 0; i < 4; i++) {
-                b[i].y -= Block.size;
-                }
-                KeyHandler.keyString = "";
-                autoDropCounter = 0;
-                break;
+                // for (int i = 0; i < 4; i++) {
+                // b[i].y -= Block.size;
+                // }
+                // KeyHandler.keyString = "";
+                // autoDropCounter = 0;
+                // break;
             case "down":
-                for (int i = 0; i < 4; i++) {
-                    b[i].y += Block.size;
+                if (!BottomCollision) {
+                    for (int i = 0; i < 4; i++) {
+                        b[i].y += Block.size;
+                    }
+                    KeyHandler.keyString = "";
+                    autoDropCounter = 1;
                 }
-                KeyHandler.keyString = "";
-                autoDropCounter = 0;
                 break;
             case "left":
-                for (int i = 0; i < 4; i++) {
-                    b[i].x -= Block.size;
+                if (!LeftCollision) {
+                    for (int i = 0; i < 4; i++) {
+                        b[i].x -= Block.size;
+                    }
+                    KeyHandler.keyString = "";
+                    autoDropCounter = 1;
                 }
-                KeyHandler.keyString = "";
-                autoDropCounter = 0;
                 break;
             case "right":
-                for (int i = 0; i < 4; i++) {
-                    b[i].x += Block.size;
+                if (!RightCollision) {
+                    for (int i = 0; i < 4; i++) {
+                        b[i].x += Block.size;
+                    }
+                    KeyHandler.keyString = "";
+                    autoDropCounter = 1;
                 }
-                KeyHandler.keyString = "";
-                autoDropCounter = 0;
                 break;
             default:
                 break;
         }
-    if (!BottomCollision){
-        autoDropCounter++;
-        if (autoDropCounter == PlayManager.dropInterval) {
-            autoDropCounter = 0;
-            for (int i = 0; i < 4; i++) {
-                b[i].y += Block.size;
+
+        if (!BottomCollision){
+            autoDropCounter++;
+            if (autoDropCounter == PlayManager.dropInterval) {
+                autoDropCounter = 0;
+                for (int i = 0; i < 4; i++) {
+                    b[i].y += Block.size;
+                }
             }
+        } else {
+            deactive();
         }
-    } 
-    else deactives();
-}
+            
+    }
+
     public void draw(Graphics2D g2) {
         int margin = 1;
         g2.setColor(b[0].c);
