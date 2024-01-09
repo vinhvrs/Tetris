@@ -31,8 +31,8 @@ This is our Tetris game project for the Object-Oriented Programming course at HC
 | Order |         Name          |                      Task                      | Contribution |
 |:-----:|:---------------------:|:----------------------------------------------:|:------------:|
 |   1   |   Nguyen Tri Vinh     |        Controls, UML, Git, Report, Slides      |      34%     |
-|   2   |   Le Duy Hieu         |        Objects, Controls, GUI, Report          |      33%     |
-|   3   |   Nguyen Minh Khoa    |         Objects, Controls, Sound, Report       |      33%     |
+|   2   |   Le Duy Hieu         |        Objects, Controls, Sound, Report        |      33%     |
+|   3   |   Nguyen Minh Khoa    |         Objects, Controls, GUI, Report         |      33%     |
 
 ### How to run
 
