@@ -20,19 +20,19 @@ This is our Tetris game project for the Object-Oriented Programming course at HC
 
 ### Team Members
 
-| No.   |         Full Name     | Student ID  |
-|:-----:|:---------------------:|:-----------:|
-|   1   |   Le Duy Hieu         | ITITIU21200 |
-|   2   |   Nguyen Tri Vinh     | ITITIU21345 |
-|   3   |   Nguyen Minh Khoa    | ITITIU21XXX |
+| No.   |         Full Name     | Student ID  |    Role    |
+|:-----:|:---------------------:|:-----------:|:----------:|
+|   1   |   Le Duy Hieu         | ITITIU21200 |   Leader   |
+|   2   |   Nguyen Tri Vinh     | ITITIU21345 |   Member   |
+|   3   |   Nguyen Minh Khoa    | ITITIU21226 |   Member   |
 
 ### Task Allocation
 
 | Order |         Name          |                      Task                      | Contribution |
 |:-----:|:---------------------:|:----------------------------------------------:|:------------:|
-|   1   |   Nguyen Tri Vinh     |        Controls, UML, git, Report, Slides      |      34      |
+|   1   |   Nguyen Tri Vinh     |        Controls, UML, Git, Report, Slides      |      34      |
 |   2   |   Le Duy Hieu         |        Objects, Controls, GUI, Report          |      33      |
-|   3   |   Nguyen Minh Khoa    |         Objects, Controls, sound, Report       |      33      |
+|   3   |   Nguyen Minh Khoa    |         Objects, Controls, Sound, Report       |      33      |
 
 ### How to run
 
