@@ -5,7 +5,7 @@
 <img src="Tetris/src/screenshot.png" alt="">
 </div>
 
-#Table of contens
+# Table of contens
 1. [Introduction](#Introduction)
 2. [Game](#Game)
 3. [UML-diagram](#UML-diagram)
@@ -47,7 +47,7 @@ This is our Tetris game project for the Object-Oriented Programming course at HC
 3. Run the project with main.java
 4. Enjoy the game!
 
-### Rules and Controls
+## Game <a name="Game"></a>
 
 |  Key  |          Action          |
 |:-----:|:------------------------:|
