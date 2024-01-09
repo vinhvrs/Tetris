@@ -1,2 +1,2 @@
-## Tetris game
+# Tetris game
 ##
