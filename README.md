@@ -66,6 +66,7 @@ Once a line is completed, it disappears, and the player earns points. The game e
 ## Features <a name="Features"></a>
 Tetris is a simple classic game, so we tried to make it according to our understanding to see how much experience we have.
 If we talk about the features we think of for the future, there might be some interesting game modes like water or sand mino.
+Moreover, we have an idea that have some items for game like bonus point, or speed up(down)
 
 
 
