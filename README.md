@@ -54,6 +54,7 @@ This is our Tetris game project for the Object-Oriented Programming course at HC
 | DOWN  | Tetrominoes down faster  |
 | LEFT  | Move tetrominoes to left |
 | RIGHT | Move tetrominoes to right|
+| ENTER | Rotation of tetrominoes  |
 |   P   |          Pause           |
 
 <div style = "text-align: justify">
