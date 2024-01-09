@@ -22,8 +22,8 @@ This is our Tetris game project for the Object-Oriented Programming course at HC
 
 | No.   |         Full Name     | Student ID  |    Role    |
 |:-----:|:---------------------:|:-----------:|:----------:|
-|   1   |   Le Duy Hieu         | ITITIU21200 |   Leader   |
-|   2   |   Nguyen Tri Vinh     | ITITIU21345 |   Member   |
+|   1   |   Nguyen Tri Vinh     | ITITIU21345 |   Leader   |
+|   2   |   Le Duy Hieu         | ITITIU21200 |   Member   |
 |   3   |   Nguyen Minh Khoa    | ITITIU21226 |   Member   |
 
 ### Task Allocation
