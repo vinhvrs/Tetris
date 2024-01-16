@@ -5,7 +5,7 @@ import java.awt.Color;
 public class Mino_L1 extends Mino{
     
     public Mino_L1(){
-        create(Color.ORANGE);
+        create(Color.DARK_GRAY);
     }
 
 
