@@ -63,7 +63,7 @@ Once a line is completed, it disappears, and the player earns points. The game e
 </div>
 
 ## UML-diagram <a name="UML-diagram"></a>
-<img src="Tetris/Tetris_UML.png" alt="">
+<img src="Tetris_UML.png" alt="">
 ## Features <a name="Features"></a>
 Tetris is a simple classic game, so we tried to make it according to our understanding to see how much experience we have.
 If we talk about the features we think of for the future, there might be some interesting game modes like water or sand mino.
