@@ -94,6 +94,8 @@ public class PlayManager {
 
             if (currentMino.b[0].x == Mino_Start_X && currentMino.b[0].y == Mino_Start_Y) {
                 GameOver = true;
+                GamePanel.music.stop();
+                GamePanel.se.play(2, false);
             }
 
             currentMino = nextMino;
