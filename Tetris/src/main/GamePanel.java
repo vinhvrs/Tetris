@@ -1,58 +1,74 @@
 package main;
 
-import java.net.URL;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineEvent;
-import javax.sound.sampled.LineEvent.Type;
-import javax.sound.sampled.LineListener;
+import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
-public class Sound {
-    private Clip musicClip;
-    private URL[] url = new URL[10];
+import javax.swing.JPanel;
 
-    public Sound() {
-        url[0] = getClass().getResource("/bgm.wav"); // background music
-        url[1] = getClass().getResource("/rotation.wav");
-        url[2] = getClass().getResource("/delete line.wav");
-        url[3] = getClass().getResource("/gameover.wav");
-        url[4] = getClass().getResource("/touchfloor.wav");
+public class GamePanel extends JPanel implements Runnable {
+    public static final int WIDTH = 1280;
+    public static final int HEIGHT = 720;
+    public final int FPS = 60;
+    private Thread gameThread;
+    private PlayManager pm;
+    public static Sound music = new Sound();
+    public static Sound se = new Sound();
+
+    public GamePanel() {
+        setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        setBackground(Color.BLACK);
+        this.setLayout(null);
+        pm = new PlayManager();
+        this.addKeyListener(new KeyHandler());
+        this.setFocusable(isFocusable());
     }
 
-    public void play(int i, boolean music) {
-        try {
-            AudioInputStream ais = AudioSystem.getAudioInputStream(url[i]);
-            Clip clip = AudioSystem.getClip();
+    public void launchGame() {
+        gameThread = new Thread(this);
+        gameThread.start();
 
-            if (music) {
-                musicClip = clip;
+        music.play(0, true);
+        music.loop();
+    }
+
+    @Override
+    public void run() {
+        double drawInterval = 1000000000.0 / FPS;
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long currentTime;
+
+        while (gameThread != null) {
+            currentTime = System.nanoTime();
+            delta += (currentTime - lastTime) / drawInterval;
+            lastTime = currentTime;
+
+            if (delta >= 1) {
+                update();
+                repaint();
+                delta--;
             }
-
-            clip.open(ais);
-            clip.addLineListener(new LineListener() {
-                @Override
-                public void update(LineEvent event) {
-                    if (event.getType() == Type.STOP) {
-                        clip.close();
-                    }
-                }
-            });
-            clip.start();
-
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
-    public void loop() {
-        musicClip.loop(Clip.LOOP_CONTINUOUSLY);
-    }
-
-    public void stop() {
-        if (musicClip != null) {
-            musicClip.stop();
-            musicClip.close();
+    private void update() {
+        if (KeyHandler.status == "pause" || pm.GameOver) {
+            return;
+        }
+        if (KeyHandler.status == "continue") {
+            pm.update();
         }
     }
+
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        // java.awt.Graphics2D g2d = (java.awt.Graphics2D) g;
+        // g2d.setColor(Color.WHITE);
+
+        Graphics2D g2 = (Graphics2D) g;
+        pm.draw(g2);
+    }
+
 }
