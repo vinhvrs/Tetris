@@ -1,5 +1,5 @@
 package main;
-import java.net.URL;
+import java.net.url;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -20,7 +20,35 @@ public class Sound {
         try {
             AudioInputStream ais = AudioSystem.getAudioInputStream(url[i]);
             Clip clip = AudioInputStream.getClip();
+
+            if (music) {
+                musicClip = clip;
+            }
+
+            clip.open(ais);
+            clip.addLineListener(new addLineListener() {
+                @Override
+                public void update(LineEvent event) {
+                    if (event.getType() == Type.STOP) {
+                        clip.close();  
+                    }
+                }
+            });
+            ais.close();
+            clip.start()
+
         } catch (Exception e) {
+
         }
+    }
+
+    public void loop() {
+        musicClip.loop(Clip.LOOP_CONTINUOUSLY);
+    }
+
+    public void stop() {
+        musicClip.stop();
+        musicClip.close();
+        
     }
 }
